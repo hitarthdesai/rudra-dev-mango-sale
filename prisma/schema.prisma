@@ -64,3 +64,15 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Mango {
+    id        Int      @id @default(autoincrement())
+    name      String
+    price     Int
+    discount  Int      @default(0)
+    stock     Int      @default(0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([name])
+}
