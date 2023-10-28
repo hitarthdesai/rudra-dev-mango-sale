@@ -8,7 +8,7 @@ export default function Home() {
         <title>Rudra Dev Mango Sale</title>
         <meta name="description" content="" />
       </Head>
-      <main className=" flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] font-mono">
         <Mangoes />
       </main>
     </>
