@@ -1,6 +1,7 @@
 import { useCartContext } from "@/context/CartContext";
 import { Mango } from "@prisma/client";
 import { Button, Card } from "flowbite-react";
+import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 
 const photo =
@@ -14,8 +15,8 @@ export const MangoCard = ({ mango: { name, price, id } }: { mango: Mango }) => {
    * const discount = mango.discount;
    */
 
-  const { items, addItem } = useCartContext();
-  console.log(items);
+  const { items, addItem, removeItem } = useCartContext();
+  const quantity = items[id] ? items[id] : 0;
 
   return (
     <Card
@@ -37,7 +38,19 @@ export const MangoCard = ({ mango: { name, price, id } }: { mango: Mango }) => {
       <p className="text-sm font-thin text-gray-700 dark:text-gray-400">
         Same day pickup • Delivery time varies
       </p>
-      <Button onClick={() => addItem(id)}>Add to Cart</Button>
+      {quantity === 0 ? (
+        <Button onClick={() => addItem(id)}>Add to Cart</Button>
+      ) : (
+        <Button.Group className="mx-8 flex flex-row items-center justify-center gap-8">
+          <Button className="rounded-full" onClick={() => removeItem(id)}>
+            <Minus />
+          </Button>
+          <p className="text-xl">{quantity}</p>
+          <Button className="rounded-full" onClick={() => addItem(id)}>
+            <Plus />
+          </Button>
+        </Button.Group>
+      )}
     </Card>
   );
 };
