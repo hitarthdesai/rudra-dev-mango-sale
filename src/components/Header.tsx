@@ -1,6 +1,7 @@
 import { useCartContext } from "@/context/CartContext";
 import { Button, Navbar } from "flowbite-react";
 import { ShoppingBasketIcon, StoreIcon } from "lucide-react";
+import Link from "next/link";
 
 const navItems: { label: string; href: string }[] = [
   {
@@ -15,18 +16,19 @@ export const Header = () => {
 
   return (
     <Navbar fluid rounded className="font-mono">
-      <Navbar.Brand href="https://flowbite-react.com">
+      <Navbar.Brand href="/">
         <StoreIcon className="mr-3 h-6 sm:h-9" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Mango Sale
         </span>
       </Navbar.Brand>
       <div className="flex gap-2 md:order-2">
-        <Button className="flex flex-row items-center justify-center">
-          <p>Checkout</p>
-          <ShoppingBasketIcon className="mx-2" />
-          <p>{numberOfItems}</p>
-        </Button>
+        <Link href="/checkout">
+          <Button className="flex flex-row items-center justify-center">
+            <ShoppingBasketIcon className="mr-2" />
+            <p>{numberOfItems}</p>
+          </Button>
+        </Link>
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
