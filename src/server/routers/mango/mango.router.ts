@@ -19,6 +19,27 @@ export const mangoRouter = createTRPCRouter({
     return await prisma.mango.findMany();
   }),
 
+  /** Get price and discount of given mangoes */
+  getPricingDetailsByIds: publicProcedure
+    .input(z.object({ ids: z.array(z.number()) }))
+    .query(async ({ input: { ids } }) => {
+      const mangoes = await prisma.mango.findMany({
+        where: {
+          id: {
+            in: ids,
+          },
+        },
+        select: {
+          id: true,
+          price: true,
+          discount: true,
+          name: true,
+        },
+      });
+
+      return { mangoes };
+    }),
+
   /** @deprecated */
   addAll: publicProcedure.input(z.undefined()).mutation(async () => {
     const ret = await prisma.mango.createMany({
