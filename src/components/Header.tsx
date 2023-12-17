@@ -16,12 +16,14 @@ export const Header = () => {
 
   return (
     <Navbar fluid rounded className="font-mono">
-      <Navbar.Brand href="/">
-        <StoreIcon className="mr-3 h-6 sm:h-9" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Mango Sale
-        </span>
-      </Navbar.Brand>
+      <Link href="/">
+        <Navbar.Brand>
+          <StoreIcon className="mr-3 h-6 sm:h-9" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            Mango Sale
+          </span>
+        </Navbar.Brand>
+      </Link>
       <div className="flex gap-2 md:order-2">
         <Link href="/checkout">
           <Button className="flex flex-row items-center justify-center">
