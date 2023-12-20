@@ -16,13 +16,11 @@ export const Header = () => {
 
   return (
     <Navbar fluid rounded className="font-mono">
-      <Link href="/">
-        <Navbar.Brand>
-          <StoreIcon className="mr-3 h-6 sm:h-9" />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Mango Sale
-          </span>
-        </Navbar.Brand>
+      <Link href="/" className="flex flex-row">
+        <StoreIcon className="mr-3 h-6 sm:h-9" />
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          Mango Sale
+        </span>
       </Link>
       <div className="flex gap-2 md:order-2">
         <Link href="/checkout">
@@ -34,8 +32,8 @@ export const Header = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        {navItems.map(({ label, href }) => (
-          <Navbar.Link href={href} active>
+        {navItems.map(({ label, href }, index) => (
+          <Navbar.Link key={index} href={href} active>
             {label}
           </Navbar.Link>
         ))}
